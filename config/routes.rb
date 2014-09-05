@@ -3,7 +3,36 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'record#index'
+
+
+  # Record related data
+  get 'record' => 'record#index'
+  get 'record/:id' => 'record#fetch'
+
+  post 'record' => 'record#create'
+  post 'record/:id' => 'record#modify'
+  post 'record/:id/start' => 'record#start'
+  post 'record/:id/stop' => 'record#stop'
+
+
+  #Assignment
+  get 'assignment' => 'assignment#index'
+  get 'assignment/:id' => 'assignment#fetch'
+  get 'assignment/:id/records' => 'assignment#fetch_records'
+
+  post 'assignment' => 'assignment#create'
+  post 'assignment/:id' => 'assignment#modify'
+
+
+  #Folder
+  get 'folder' => 'folder#index'
+  get 'folder/:id' => 'folder#fetch'
+  get 'folder/:id/assignments' => 'folder#fetch_assignments'
+
+  post 'folder' => 'folder#create'
+  post 'folder/:id' => 'folder#modify'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -53,4 +82,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
+
 end
