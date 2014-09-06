@@ -1,0 +1,58 @@
+<html>
+
+
+    <head>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.css" rel="stylesheet">
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/notebook.js"></script>
+
+    </head>
+
+    <body onload = "fetchContents()">
+        <br>
+        <div class="container">
+            <form class="form-search">
+                <input type="text" class="input-medium search-query" placeholder="Folder id">
+                <button type="button" class="btn" onclick="">Search</button>
+            </form>
+
+
+        </div>
+
+        <br><br>
+
+
+        <div class="container">
+            <form class="form-inline">
+                <input id="inputName" type="text" class="input-small" placeholder="Name">
+                <input id="inputSubject" type="text" class="input-small" placeholder="Subject">
+                <button type="button" class="btn" onclick="createFolder()" >Create Folder</button>
+            </form>
+        </div>
+
+        <br><br>
+
+        <div class="container">
+
+            <table class="table table-bordered table-hover" >
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Subject Name</th>
+                </tr>
+                </thead>
+                <tbody id="folders">
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+    </body>
+
+</html>

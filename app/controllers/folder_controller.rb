@@ -1,6 +1,10 @@
 class FolderController < ApplicationController
   respond_to :json
 
+  def static
+    redirect_to('/notebook.html')
+  end
+
   def index
     render json: Folder.all
   end
