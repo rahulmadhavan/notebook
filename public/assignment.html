@@ -12,13 +12,14 @@
 
 <body onload = "fetchAssignmentsOnLoad()">
 <br>
-<div class="container">
+
+
+<div class="container" id="assignment_form" style="position : fixed; background-color: #5CADFF;">
     <h2> Assignments </h2>
-</div>
 
 <br><br>
 
-<div class="container">
+
     <form class="form-inline">
         <input id="inputName" type="text" class="input-small" placeholder="Name">
         <button type="button" class="btn" onclick="createAssignment()">Create Assignment</button>
@@ -27,7 +28,7 @@
 
 <br><br>
 
-<div class="container">
+<div class="container" style="padding-top: 150">
 
     <table class="table table-bordered table-hover" >
         <thead>
