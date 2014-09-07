@@ -1,6 +1,11 @@
 class AssignmentController < ApplicationController
   respond_to :json
 
+  def static
+    folder_id = params[:folder_id]
+    redirect_to('/assignment.html?folder_id='+folder_id)
+  end
+
   def index
     render json: Assignment.all
   end
@@ -37,5 +42,11 @@ class AssignmentController < ApplicationController
     assignment = Assignment.find(params[:id].to_i)
     render json: assignment.records
   end
+
+  def delete
+    Assignment.destroy(params[:id].to_i)
+    render json: true
+  end
+
 
 end

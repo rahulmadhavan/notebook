@@ -1,0 +1,51 @@
+<html>
+
+
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/notebook.js"></script>
+
+</head>
+
+<body onload = "fetchAssignmentsOnLoad()">
+<br>
+<div class="container">
+    <h2> Assignments </h2>
+</div>
+
+<br><br>
+
+<div class="container">
+    <form class="form-inline">
+        <input id="inputName" type="text" class="input-small" placeholder="Name">
+        <button type="button" class="btn" onclick="createAssignment()">Create Assignment</button>
+    </form>
+</div>
+
+<br><br>
+
+<div class="container">
+
+    <table class="table table-bordered table-hover" >
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="assignments">
+
+        </tbody>
+    </table>
+
+
+</div>
+
+
+</body>
+
+</html>

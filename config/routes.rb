@@ -7,23 +7,29 @@ Rails.application.routes.draw do
 
 
   # Record related data
+
   get 'record' => 'record#index'
   get 'record/:id' => 'record#fetch'
+  get 'records' => 'record#static'
 
   post 'record' => 'record#create'
   post 'record/:id' => 'record#modify'
   post 'record/:id/start' => 'record#start'
   post 'record/:id/stop' => 'record#stop'
+  delete 'record/:id' => 'record#delete'
 
 
   #Assignment
+
   get 'assignment' => 'assignment#index'
   get 'assignment/:id' => 'assignment#fetch'
   get 'assignment/:id/records' => 'assignment#fetch_records'
+  get 'assignments' => 'assignment#static'
+
 
   post 'assignment' => 'assignment#create'
   post 'assignment/:id' => 'assignment#modify'
-
+  delete 'assignment/:id' => 'assignment#delete'
 
   #Folder
   get 'folder' => 'folder#index'
@@ -32,6 +38,8 @@ Rails.application.routes.draw do
 
   post 'folder' => 'folder#create'
   post 'folder/:id' => 'folder#modify'
+  delete 'folder/:id' => 'folder#delete'
+
 
 
   # Example of regular route:

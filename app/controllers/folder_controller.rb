@@ -43,5 +43,10 @@ class FolderController < ApplicationController
     render json: folder.assignments
   end
 
+  def delete
+    Folder.destroy(params[:id].to_i)
+    render json: true
+  end
+
 
 end
