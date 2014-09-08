@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140905163456) do
   create_table "assignments", force: true do |t|
     t.string   "name"
     t.integer  "folder_id"
+    t.boolean  "deleted",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140905163456) do
   create_table "folders", force: true do |t|
     t.string   "name"
     t.string   "subject"
+    t.boolean  "deleted",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,13 +32,14 @@ ActiveRecord::Schema.define(version: 20140905163456) do
   create_table "records", force: true do |t|
     t.date     "date"
     t.string   "who"
-    t.datetime "start"
-    t.datetime "stop"
+    t.string   "start"
+    t.string   "stop"
     t.integer  "interruptions"
     t.string   "question"
     t.text     "comments"
     t.integer  "assignment_id"
     t.boolean  "commit"
+    t.boolean  "deleted",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

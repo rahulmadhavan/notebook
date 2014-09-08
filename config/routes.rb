@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'assignment' => 'assignment#index'
   get 'assignment/:id' => 'assignment#fetch'
+  get 'assignment/:id/report' => 'assignment#report'
   get 'assignment/:id/records' => 'assignment#fetch_records'
   get 'assignments' => 'assignment#static'
 

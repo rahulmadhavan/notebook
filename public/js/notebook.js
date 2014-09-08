@@ -75,8 +75,8 @@ function deleteFolder(id){
 
 function fetchFolders(){
 
-    var folder_template = '<tr onclick="loadAssignments({4})"> \
-        <th>{0} </th> \
+    var folder_template = '<tr> \
+        <th onclick="loadAssignments({4})">{0} </th> \
         <th>{1} </th> \
         <th>{2} </th>\
         <th><button type="button" class="btn btn-danger" onclick="deleteFolder({3})">Delete</button> </th> \
@@ -178,10 +178,11 @@ function fetchAssignmentsOnLoad(){
 
 function fetchAssignments(folder_id){
 
-    var assignment_template = '<tr onclick="loadRecords({3})"> \
-        <th>{0} </th> \
+    var assignment_template = '<tr> \
+        <th onclick="loadRecords({3})" >{0} </th> \
         <th>{1} </th> \
-        <th><button type="button" class="btn btn-danger" onclick="deleteAssignment({2})">Delete</button> </th> \
+        <th><a href="#" class="btn btn-success" onclick="downloadReport({2})" ><i class="icon-white icon-arrow-down"></i> Report </a> </th> \
+        <th><button type="button" class="btn btn-danger" onclick="deleteAssignment({3})">Delete</button> </th> \
     </tr>'
 
 
@@ -195,7 +196,7 @@ function fetchAssignments(folder_id){
     request.done(function( assignments ) {
         var assignment_html = ''
         $.each(assignments,function(index, element) {
-            var assignment = assignment_template.format(element.id,element.name,element.id,element.id)
+            var assignment = assignment_template.format(element.id,element.name,element.id,element.id,element.id)
             assignment_html = assignment_html + assignment
         })
 
@@ -205,15 +206,18 @@ function fetchAssignments(folder_id){
 }
 
 
+function downloadReport(assignment_id){
+
+    window.location = "assignment/"+ assignment_id +"/report";
+
+}
+
 /////////////////////////////ASSIGNMENT FUNCTIONS END
 
 
 /////////////////////////////RECORD FUNCTIONS START
 
 
-$(function() {
-    $('#inputDate').datepicker();
-});
 
 function loadRecords(assignment_id){
 
@@ -221,12 +225,31 @@ function loadRecords(assignment_id){
 
 }
 
+$(function() {
+    $('#inputDate').datepicker();
+    $('#inputStart').timepicker({
+        showNowButton: true,
+        showDeselectButton: true,
+        defaultTime: '',  // removes the highlighted time for when the input is empty.
+        showCloseButton: true
+    });
+    $('#inputStop').timepicker({
+        showNowButton: true,
+        showDeselectButton: true,
+        defaultTime: '',  // removes the highlighted time for when the input is empty.
+        showCloseButton: true
+    });
+});
+
+
 function createRecord(){
 
     var assignment_id = $.QueryString["assignment_id"];
 
     var date = $('#inputDate').val()
     var who = $('#inputWho').val()
+    var start = $('#inputStart').val()
+    var stop = $('#inputStop').val()
     var interrupts = $('#inputInterruptions').val()
     var question = $('#inputQuestion').val()
     var comments = $('#inputComments').val()
@@ -238,6 +261,8 @@ function createRecord(){
         type: "POST",
         data: JSON.stringify({ date : date,
             who: who,
+            start: start,
+            stop: stop,
             interruptions: interrupts,
             question: question,
             comments: comments,
@@ -288,6 +313,8 @@ function saveRecord(record_id){
 
     var date = $('#editDate').val()
     var who = $('#editWho').val()
+    var start = $('#editStart').val()
+    var stop = $('#editStop').val()
     var interrupts = $('#editInterruptions').val()
     var question = $('#editQuestion').val()
     var comments = $('#editComments').val()
@@ -296,7 +323,15 @@ function saveRecord(record_id){
     var request = $.ajax({
         url: "record/"+record_id,
         type: "POST",
-        data: JSON.stringify({ date : date, who: who, interruptions: interrupts, question: question, comments: comments, commit: commit }),
+        data: JSON.stringify({ date : date,
+            who: who,
+            interruptions: interrupts,
+            question: question,
+            comments: comments,
+            commit: commit,
+            start: start,
+            stop: stop
+        }),
         dataType: "json",
         contentType: "application/json"
     });
@@ -336,8 +371,8 @@ function editRecords(record_id){
     var record_template = '<th>{0} </th> \
         <th><input id="editDate" type="text" class="input-small" placeholder="Date" value="{1}"></th> \
         <th><input id="editWho" type="text" class="input-small" placeholder="Who" value="{2}"></th> \
-        <th><button type="button" class="btn btn-primary" onclick="startRecord({3})">start</button>  </th> \
-        <th><button type="button" class="btn btn-inverse" onclick="stopRecord({4})">stop</button> </th> \
+        <th><input id="editStart" type="text" class="input-small" placeholder="Start Time" value="{3}"></th> \
+        <th><input id="editStop" type="text" class="input-small" placeholder="Stop Time" value="{4}"></th> \
         <th><input id="editInterruptions" type="text" class="input-small" placeholder="Interruptions" value="{5}"> </th> \
         <th><input id="editQuestion" type="text" class="input-small" placeholder="Question" value="6"> </th> \
         <th><textarea id="editComments" rows="3" class="input-small" placeholder="Comments">{7}</textarea></th> \
@@ -377,10 +412,23 @@ function editRecords(record_id){
             commit = '<input id="editCommit" type="checkbox" class="input-small" value="">'
         }
 
-        var record_html = record_template.format(id,date,who,id,id,interruptions,question,comments,commit,id)
+        var record_html = record_template.format(id,date,who,start,stop,interruptions,question,comments,commit,id)
 
         $('#'+record_id).html(record_html)
         $('#editDate').datepicker();
+        $('#editStart').timepicker({
+            showNowButton: true,
+            showDeselectButton: true,
+            defaultTime: '',  // removes the highlighted time for when the input is empty.
+            showCloseButton: true
+        });
+        $('#editStop').timepicker({
+            showNowButton: true,
+            showDeselectButton: true,
+            defaultTime: '',  // removes the highlighted time for when the input is empty.
+            showCloseButton: true
+        });
+
 
     });
 

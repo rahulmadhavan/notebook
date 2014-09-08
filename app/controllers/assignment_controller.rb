@@ -1,5 +1,5 @@
 class AssignmentController < ApplicationController
-  respond_to :json
+  respond_to :json, except: [:report]
 
   def static
     folder_id = params[:folder_id]
@@ -7,7 +7,7 @@ class AssignmentController < ApplicationController
   end
 
   def index
-    render json: Assignment.all
+    render json: Assignment.where(:deleted => false)
   end
 
   def create
@@ -44,8 +44,17 @@ class AssignmentController < ApplicationController
   end
 
   def delete
-    Assignment.destroy(params[:id].to_i)
+    assignment = Assignment.find(params[:id].to_i)
+    assignment.update!({:deleted => true})
     render json: true
+  end
+
+  def report
+    assignment = Assignment.find(params[:id].to_i)
+
+    send_data assignment.report,
+              :type => 'text',
+              :disposition => "attachment; filename=\"report_assignment#{params[:id]}.txt\""
   end
 
 

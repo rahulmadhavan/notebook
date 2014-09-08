@@ -6,7 +6,7 @@ class FolderController < ApplicationController
   end
 
   def index
-    render json: Folder.all
+    render json: Folder.where(:deleted => false)
   end
 
   def create
@@ -44,7 +44,8 @@ class FolderController < ApplicationController
   end
 
   def delete
-    Folder.destroy(params[:id].to_i)
+    folder = Folder.find(params[:id].to_i)
+    folder.update!({:deleted => true})
     render json: true
   end
 

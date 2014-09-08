@@ -7,11 +7,13 @@
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/jquery-ui.structure.css" rel="stylesheet">
     <link href="css/jquery-ui.theme.css" rel="stylesheet">
+    <link href="css/jquery.ui.timepicker.css" rel="stylesheet">
 
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/notebook.js"></script>
+    <script src="js/jquery.ui.timepicker.js"></script>
 </head>
 
 <body onload = "fetchRecordsOnLoad()">
@@ -24,6 +26,8 @@
     <form class="form-inline">
         <input id="inputDate" type="text" class="input-small" placeholder="Date">
         <input id="inputWho" type="text" class="input-small" placeholder="Who">
+        <input id="inputStart" type="text" class="input-small" placeholder="Start">
+        <input id="inputStop" type="text" class="input-small" placeholder="Stop">
         <input id="inputInterruptions" type="text" class="input-small" placeholder="Interruptions">
         <input id="inputQuestion" type="text" class="input-small" placeholder="Question">
         <textarea id="inputComments" rows="3" class="input-small" placeholder="Comments"></textarea>
