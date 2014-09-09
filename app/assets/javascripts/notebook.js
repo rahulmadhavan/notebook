@@ -374,7 +374,7 @@ function editRecords(record_id){
         <th><input id="editStart" type="text" class="input-small" placeholder="Start Time" value="{3}"></th> \
         <th><input id="editStop" type="text" class="input-small" placeholder="Stop Time" value="{4}"></th> \
         <th><input id="editInterruptions" type="text" class="input-small" placeholder="Interruptions" value="{5}"> </th> \
-        <th><input id="editQuestion" type="text" class="input-small" placeholder="Question" value="6"> </th> \
+        <th><input id="editQuestion" type="text" class="input-small" placeholder="Question" value="{6}"> </th> \
         <th><textarea id="editComments" rows="3" class="input-small" placeholder="Comments">{7}</textarea></th> \
         <th>{8} </th> \
         <th><button type="button" class="btn btn-warning" onclick="saveRecord({9})">Save</button> </th>\

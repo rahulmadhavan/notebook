@@ -53,7 +53,9 @@ class Assignment < ActiveRecord::Base
                    time_string_to_i(record.start) -
                    (record.interruptions ? record.interruptions : 0)
 
-               question_time[record.question] = question_time[record.question] ? question_time[record.question] + time_on_question : time_on_question
+                if record.question.present?
+                  question_time[record.question] = question_time[record.question] ? question_time[record.question] + time_on_question : time_on_question
+                end
 
                date = format_string(format_date(record.date),date_length)
                who = format_string(record.who,who_length)
