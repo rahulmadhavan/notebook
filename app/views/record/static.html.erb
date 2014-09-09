@@ -1,0 +1,56 @@
+<br>
+<div class="container folder"  class="container" id="record_form" >
+  <h2> Records </h2>
+
+  <br><br>
+
+  <form class="form-inline">
+    <input id="inputDate" type="text" class="input-small" placeholder="Date">
+    <input id="inputWho" type="text" class="input-small" placeholder="Who">
+    <input id="inputStart" type="text" class="input-small" placeholder="Start">
+    <input id="inputStop" type="text" class="input-small" placeholder="Stop">
+    <input id="inputInterruptions" type="text" class="input-small" placeholder="Interruptions">
+    <input id="inputQuestion" type="text" class="input-small" placeholder="Question">
+    <textarea id="inputComments" rows="3" class="input-small" placeholder="Comments"></textarea>
+    <label class="checkbox">
+      <input id="inputCommit" type="checkbox" class="input-small" value="">
+      commit
+    </label>
+
+    <button type="button" class="btn" onclick="createRecord()">Create Record</button>
+  </form>
+</div>
+
+<br><br>
+<input type="hidden" id = "assignment_id" value="<%= @assignment_id_static %>">
+
+<div class="container folder-table" style="padding-top: 200">
+
+  <table class="table table-bordered table-hover" >
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>date</th>
+      <th>who</th>
+      <th>start</th>
+      <th>stop</th>
+      <th>interrupts</th>
+      <th>question</th>
+      <th>comments</th>
+      <th>commit</th>
+      <th>   </th>
+      <th>   </th>
+    </tr>
+    </thead>
+    <tbody id="records">
+
+    </tbody>
+  </table>
+
+
+</div>
+
+<script type="text/javascript">
+    fetchRecordsOnLoad(<%= @assignment_id_static %>)
+</script>
+

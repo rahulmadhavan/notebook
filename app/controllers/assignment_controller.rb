@@ -2,8 +2,9 @@ class AssignmentController < ApplicationController
   respond_to :json, except: [:report]
 
   def static
-    folder_id = params[:folder_id]
-    redirect_to('/assignment.html?folder_id='+folder_id)
+    @folder_id_static = params[:folder_id]
+    #redirect_to('/assignment.html?folder_id='+folder_id)
+    render
   end
 
   def index

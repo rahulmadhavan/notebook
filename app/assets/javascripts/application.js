@@ -10,7 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-2.1.1.min
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
+//= require jquery.ui.timepicker
+//= require notebook
+
 //= require_tree .
+

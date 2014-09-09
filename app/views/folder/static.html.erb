@@ -1,0 +1,39 @@
+<br>
+
+<div class="container folder" id="folder_form" >
+  <h2> Folders</h2>
+
+  <br><br>
+
+  <form class="form-inline">
+    <input id="inputName" type="text" class="input-small" placeholder="Name">
+    <input id="inputSubject" type="text" class="input-small" placeholder="Subject">
+    <button type="button" class="btn" onclick="createFolder()" >Create Folder</button>
+  </form>
+</div>
+
+<br><br>
+
+<div class="container folder-table">
+
+  <table class="table table-bordered table-hover" >
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Subject Name</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody id="folders">
+
+    </tbody>
+  </table>
+
+
+</div>
+
+
+<script type="text/javascript">
+    fetchFolders()
+</script>

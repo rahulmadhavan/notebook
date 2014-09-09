@@ -1,0 +1,39 @@
+<div class="container folder" id="assignment_form">
+  <h2> Assignments </h2>
+
+  <br><br>
+
+
+  <form class="form-inline">
+    <input id="inputName" type="text" class="input-small" placeholder="Name">
+    <input id="hackText" type="text" class="input-small" placeholder="Hack" hidden>
+    <button type="button" class="btn" onclick="createAssignment();return false;">Create Assignment</button>
+  </form>
+</div>
+
+<br><br>
+<input type="hidden" id="folder_id" value="<%= @folder_id_static %>">
+
+<div class="container folder-table">
+
+  <table class="table table-bordered table-hover" >
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody id="assignments">
+
+    </tbody>
+  </table>
+
+
+</div>
+
+
+<script type="text/javascript">
+    fetchAssignmentsOnLoad(<%= @folder_id_static %>)
+</script>

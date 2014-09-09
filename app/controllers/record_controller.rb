@@ -2,8 +2,8 @@ class RecordController < ApplicationController
   respond_to :json
 
   def static
-    assignment_id = params[:assignment_id]
-    redirect_to('/record.html?assignment_id='+assignment_id)
+    @assignment_id_static = params[:assignment_id]
+    #redirect_to('/record.html?assignment_id='+assignment_id)
   end
 
   def index
