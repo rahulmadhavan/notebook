@@ -4,10 +4,13 @@
 
 
 
+.folder-table {
+  margin:200px 0 0px 15px;
+}
+
 .folder {
+  position: fixed;
+  margin:0px 0 0px 15px;
   background-color: #5CADFF;
 }
 
-.folder-table {
-  padding-top: 500;
-}
