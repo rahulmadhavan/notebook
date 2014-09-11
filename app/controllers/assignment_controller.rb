@@ -53,9 +53,7 @@ class AssignmentController < ApplicationController
   def report
     assignment = Assignment.find(params[:id].to_i)
 
-    send_data assignment.report,
-              :type => 'text',
-              :disposition => "attachment; filename=\"report_assignment#{params[:id]}.txt\""
+    render plain: assignment.report
   end
 
 
