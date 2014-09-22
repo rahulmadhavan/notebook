@@ -77,7 +77,7 @@ class Assignment < ActiveRecord::Base
       minutes_footer += empty_line + "Total Time On Task Q#{key}  (minutes)                    #{question_time[key]}"
       time = question_time[key]/60.0
       time_s = '%.2f' % time
-      hours_footer += empty_line + "TOTQ#{key}  (hours and tenths)                           #{time_s[0..-2]}"
+      hours_footer += empty_line + "TOTQ#{key}(hours and tenths): #{time_s[0..-2]}"
     end
 
     footer +=  minutes_footer + hours_footer
